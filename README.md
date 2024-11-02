@@ -1,1 +1,1 @@
-# HackNC-2024
+# Aligned
