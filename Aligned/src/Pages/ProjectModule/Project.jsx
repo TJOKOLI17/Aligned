@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { apiKey } from '../../key.js'
 import styles from "./Project.module.css"
 import ActiveButton from '../../../Components/ActiveButtonModule/ActiveButton.jsx'
+import InputForm from '../../../Components/InputFormModule/InputForm.jsx'
 
 function Project() {
     const navigate = useNavigate();
@@ -85,6 +86,7 @@ function Project() {
                 projectId={id}
                 projectData={projectData}/>
                 <div className={styles.projectNotes}>
+                    <InputForm></InputForm>
                     Notes to come
                 </div>
             </div>
