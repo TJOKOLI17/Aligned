@@ -7,8 +7,6 @@ font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans
 width: 100vw;
 height: 100vh;
 display: flex;
-
-background-color: green;
 }
 
 .sidebar{
@@ -66,7 +64,7 @@ background-color: #9ABD75;
 }
 
 .projectInfo{
-background-color: rgb(70, 135, 197);
+  margin-left: 40px;
 }
 
 .projectNotes{

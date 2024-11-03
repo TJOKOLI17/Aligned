@@ -2,6 +2,7 @@ import { useState } from 'react'
 import SignIn from './(auth)/SignInModule/SignIn'
 import SignUp from './(auth)/SignUpModule/SignUp'
 import Project from './Pages/ProjectModule/Project';
+import Create from './Pages/CreateModule/Create';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Pages/HomeModule/Home';
 import ActivityCard from '../Components/ActivityCardModule/ActivityCard';
@@ -26,6 +27,7 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/Project" element={<Project />} />
+          <Route path="/Create" element={<Create />} />
         </Routes>
       </Router>
     </>

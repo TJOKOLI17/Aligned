@@ -49,21 +49,9 @@ function SignIn() {
 
 
   const goToSignUp = () => {
-    navigate('/sign-up'); // Assuming your login route is "/login"
+    navigate('/sign-up');
     console.log("page changed!")
   };
-
-//   const pizza = doc(firestore, 'something/2021-09-14');
-// function writePizza() {
-//   const docData = {
-//     description: 'A good pizza is good!',
-//     price: 99.1
-//   }
-//   setDoc(pizza, docData);
-//   console.log('blob')
-// }
-// console.log('Hello there, Firestore!');
-// writePizza(); 
 
   return (
     <>

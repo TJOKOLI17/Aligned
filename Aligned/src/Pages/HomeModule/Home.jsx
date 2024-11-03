@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styles from './Home.module.css'
 import SearchBar from '../../SearchBarModule/SearchBar.jsx'
 import EventImageButton from '../../../Components/EventImageButtonModule/EventImageButton.jsx'
@@ -7,17 +8,6 @@ import { getFirestore, doc, setDoc } from 'firebase/firestore';
 import ActivityCard from '../../../Components/ActivityCardModule/ActivityCard.jsx'
 import logo from '../../assets/Aligned_logo.png'
 
-// const pizza = doc(firestore, 'something/2021-09-14');
-// function writePizza() {
-//   const docData = {
-//     description: 'A good pizza is good!',
-//     price: 99.1
-//   }
-//   setDoc(pizza, docData);
-//   console.log('blob')
-// }
-// console.log('Hello there, Firestore!');
-// writePizza(); 
 
 function Home() {
   document.title = "Home"
@@ -25,6 +15,11 @@ function Home() {
   const [activityCards, setActivityCards] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+  const goToCreatePage = () => {
+    navigate('/Create');
+  }
 
 
   useEffect(() => {
@@ -61,7 +56,7 @@ return (
                     subtitle={card.description}
                 />
             ))}
-          <EventImageButton icon={addIcon}/>
+          <EventImageButton icon={addIcon} onClick={goToCreatePage}/>
       </div>
       
 

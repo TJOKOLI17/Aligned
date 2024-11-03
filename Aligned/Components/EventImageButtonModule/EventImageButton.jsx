@@ -6,6 +6,10 @@ function EventImageButton(props) {
     if(fn && e){
       fn(e);
     }
+
+    if(!e){
+      fn()
+    }
   }
   return (
     <button className={styles.eventImageBtn} onClick={(e) => {handleOnClick(props.onClick, e)}}>

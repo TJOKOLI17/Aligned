@@ -5,6 +5,7 @@ import { apiKey } from '../../key.js'
 import styles from "./Project.module.css"
 import ActiveButton from '../../../Components/ActiveButtonModule/ActiveButton.jsx'
 import InputForm from '../../../Components/InputFormModule/InputForm.jsx'
+import Notes from '../../../Components/NotesModule/Notes.jsx'
 
 function Project() {
     const navigate = useNavigate();
@@ -21,14 +22,72 @@ function Project() {
     //     console.log(id)
     // }
 
-    const handleStatusUpdate = (newStatus, e) => {
-        document.querySelectorAll(`.${styles.statusBtn}`).forEach(btn => {
+    const handleStatusUpdate = async (newStatus, e) => {
+        let statusBtns = document.querySelectorAll(`.${styles.statusBtn}`);
+        statusBtns.forEach(btn => {
             btn.classList.remove(styles.currentStatus);
         });
 
-        const statusBtn = e.currentTarget;
-        statusBtn.classList.add(styles.currentStatus)
-        setStatus(newStatus)
+        if(e){
+            const statusBtn = e.currentTarget;
+            statusBtn.classList.add(styles.currentStatus)
+            setStatus(newStatus)
+            await postData(newStatus)
+        }else{
+            switch (newStatus) {
+                case 100:
+                    statusBtns[0].classList.add(styles.currentStatus)
+                    break;
+
+                case 75:
+                    statusBtns[1].classList.add(styles.currentStatus)
+                    break;
+
+                case 50:
+                    statusBtns[2].classList.add(styles.currentStatus)
+                    break;
+
+                case 25:
+                    statusBtns[3].classList.add(styles.currentStatus)
+                    break;
+
+                case 0:
+                    statusBtns[4].classList.add(styles.currentStatus)
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    
+    const updateData = async (newStatus) => {
+        try {
+            await fetch(`${apiKey}/${projectData.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({...projectData, progress: newStatus}),
+            });
+            console.log("Status update successful")
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const handleDelete =  async () => {
+        await deleteProject();
+    }
+    const deleteProject = async () => {
+        try {
+            await fetch(`${apiKey}/${projectData.id}`, {
+                method: 'DELETE',
+            });
+            navigate('/Home');
+        } catch (error) {
+            throw new Error(error)
+        }
     }
 
 
@@ -64,6 +123,9 @@ function Project() {
     }
     // console.log(projectData.timer)
     document.title = `${projectData.name}`
+    handleStatusUpdate(projectData.progress, null)
+
+    
 
 
 
@@ -85,13 +147,11 @@ function Project() {
                 timeInProgress={projectData.timer}
                 projectId={id}
                 projectData={projectData}/>
-                <div className={styles.projectNotes}>
-                    <InputForm></InputForm>
-                    Notes to come
-                </div>
+                <Notes/>
             </div>
             <div>
-                <ActiveButton title="Save"></ActiveButton>
+                {/* <ActiveButton title="Save"></ActiveButton> */}
+                <button onClick={handleDelete}>Delete</button>
             </div>
         </div>
         
