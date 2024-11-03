@@ -2,7 +2,7 @@
 
 # Overview
 
-This is a project made by Tobenna Okonna, Jonathan Nwokeji, Brian Pov, and Luis Fajardo called _Aligned_, which allows users to focus on their tasks and assignments. Users sign in with their email and password, and they are allowed to create projects and assignments on their dashboard. After they create their projects, they can work on their projects for as long as they wish. This is a project we made to tackle procrastination and increase focus for UNC students on their assignments.
+This is a project made by Tobenna Okoli, Jonathan Nwokeji, Brian Pov, and Luis Fajardo called _Aligned_, which allows users to focus on their tasks and assignments. Users sign in with their email and password, and they are allowed to create projects and assignments on their dashboard. After they create their projects, they can work on their projects for as long as they wish. This is a project we made to tackle procrastination and increase focus for UNC students on their assignments.
 
 # Implementation
 
