@@ -1,0 +1,28 @@
+.eventimageBtn{
+    padding: 10px 30px;
+    width: fit-content;
+    border-radius: 100px;
+    color: black;
+    background-color: #9ABD75;
+    box-shadow: 1px 1px 3px 1px rgb(81, 77, 77)
+}
+
+button{
+    width: 100px;
+    /* background-color: transparent; */
+    background-color: #F5F0E8;
+    border: none;
+    border-radius: 10px;
+    /* cursor: pointer; */
+    transition: background-color 0.3s ease;
+    height: 100px;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: hsl(37, 39%, 100%);
+}
+
+img{
+    width: 100%;
+}

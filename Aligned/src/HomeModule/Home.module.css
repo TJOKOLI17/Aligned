@@ -1,0 +1,13 @@
+body{
+    background-color: #F5F0E8;
+    /* display: flex; */
+    
+} 
+
+.activityCardDiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: center */
+;
+}
