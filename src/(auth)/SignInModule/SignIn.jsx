@@ -35,8 +35,9 @@ function SignIn() {
     if (!isSigningIn) {
         setIsSigningIn(true);
         try {
-            await doSignInWithEmailAndPassword(email, password);
-            navigate('/Home');
+            // await doSignInWithEmailAndPassword(email, password);
+            setTimeout(() => {navigate('/Home');}, 2000)
+            // navigate('/Home');
             // Redirect or update state as needed
         } catch (error) {
             console.error("Sign-in failed:", error);
@@ -55,8 +56,8 @@ function SignIn() {
 
   return (
     <>
-      <div className={styles.signUpDiv}>
-        <div className={styles.signUpBox}>
+      <div className={styles.signInDiv}>
+        <div className={styles.signInBox}>
           <div className={styles.form}>
             <EventInputForm label = "Email:" onChange={(e) => {handleEmailChange(e)}} value={email}>{email}</EventInputForm ><br/> 
             <EventInputForm label = "Password:" onChange={(e) => {handlePasswordChange(e)}} value ={password}>{password}</EventInputForm><br/><br/>

@@ -4,7 +4,8 @@ body{
     justify-content: center;
 }
 
-.signUpDiv{
+.signInDiv{
+    margin-top: 50px;
     background-color: #6A5485;
     border-radius: 20px;
     padding: 100px 200px;
@@ -25,7 +26,7 @@ body{
     width:100%;
 }
 
-.signUpBox{
+.signInBox{
     display: flex;
     align-items: center;
     justify-content: center;

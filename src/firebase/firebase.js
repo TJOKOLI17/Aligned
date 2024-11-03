@@ -9,7 +9,7 @@ import { getFirestore, doc, setDoc, collection, addDoc } from 'firebase/firestor
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCGNXZoTAPaiQ4YhhYFT9ISjh8C_-sGTtU",
+  apiKey: "INSERT KEY HERE",
   authDomain: "blob-29c16.firebaseapp.com",
   projectId: "blob-29c16",
   storageBucket: "blob-29c16.firebasestorage.app",

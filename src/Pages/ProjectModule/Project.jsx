@@ -32,7 +32,7 @@ function Project() {
             const statusBtn = e.currentTarget;
             statusBtn.classList.add(styles.currentStatus)
             setStatus(newStatus)
-            await postData(newStatus)
+            await updateData(newStatus)
         }else{
             switch (newStatus) {
                 case 100:
@@ -151,7 +151,7 @@ function Project() {
             </div>
             <div>
                 {/* <ActiveButton title="Save"></ActiveButton> */}
-                <button onClick={handleDelete}>Delete</button>
+                <button className={styles.deleteBtn} onClick={handleDelete}>Delete</button>
             </div>
         </div>
         
