@@ -1,0 +1,8 @@
+.activeBtn{
+    padding: 10px 30px;
+    width: fit-content;
+    border-radius: 100px;
+    color: black;
+    background-color: #9ABD75;
+    box-shadow: 1px 1px 3px 1px rgb(81, 77, 77)
+}

@@ -1,0 +1,40 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signUpDiv{
+    background-color: #6A5485;
+    border-radius: 20px;
+    padding: 100px 200px;
+}
+
+.form{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo{
+    margin-left: 100px;
+    width: 300px;
+}
+
+.img{
+    width:100%;
+}
+
+.signUpBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #6A5485;
+    padding: 100px;
+    border-radius: 20px;
+}
+
+.already{
+    width: fit-content;
+    margin: auto;
+}
