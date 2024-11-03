@@ -18,6 +18,10 @@ app.add_middleware(
 async def get_items():
     return read()
 
+@app.get("/{id}", response_model=ItemModel)
+async def get_item_at_id(id: int):
+    return find(id)
+
 @app.post("/", response_model=ItemModel)
 def create_item(item: ItemModel):
     return create(item)
@@ -30,5 +34,5 @@ def update_item(item: ItemModel):
 def delete_item(item_id:int): 
     delete(item_id)
 
-# item = ItemModel(name="Killing Luis", project_notes="Day 79", timer="11:09:02", progress=100, description="Crying")
+# item = ItemModel(name="Pushing Brian of a cliff", project_notes="Day 112", timer="39:21:05", progress=75, description="Almost there")
 # create_item(item)

@@ -7,7 +7,7 @@ function ActivityCard(props) {
 
   const navigate = useNavigate();
   const goToProjectPage = () => {
-    navigate('/Project'); // Assuming your login route is "/login"
+    navigate('/Project', { state: { id: props.id } });
   };
 
   return (

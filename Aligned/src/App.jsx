@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import SignIn from './(auth)/SignInModule/SignIn'
 import SignUp from './(auth)/SignUpModule/SignUp'
-import Project from './HomeModule/ProjectModule/Project';
+import Project from './Pages/ProjectModule/Project';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './HomeModule/Home';
+import Home from './Pages/HomeModule/Home';
 import ActivityCard from '../Components/ActivityCardModule/ActivityCard';
 import logo from './assets/Aligned_logo.png'
 

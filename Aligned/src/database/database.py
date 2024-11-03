@@ -66,6 +66,26 @@ def read() -> list[ItemModel]:
     cursor.close()
     db.close()
     return items
+
+def find(id:int) -> ItemModel:
+    open_or_create_Items_table()
+    db = sqlite3.connect('Projects.db')
+    cursor = db.cursor()
+
+    cursor.execute("SELECT * FROM Projects WHERE id = ?", (id,))
+
+    entity = cursor.fetchone()
+
+    if entity is None:
+        cursor.close()
+        db.close()
+        raise ValueError(f"No project found with id: {id}")
+
+    found_item = ItemModel(id=entity[0], name=entity[1], project_notes=entity[2], timer=entity[3], progress=entity[4], description=entity[5])
+
+    cursor.close(), db.close()
+
+    return found_item
           
 def update(item: ItemModel):
     db = sqlite3.connect('Projects.db')

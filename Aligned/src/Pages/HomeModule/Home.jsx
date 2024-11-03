@@ -1,10 +1,10 @@
 import { React, useState, useEffect } from 'react'
 import styles from './Home.module.css'
-import SearchBar from '../SearchBarModule/SearchBar.jsx'
-import EventImageButton from '../../Components/EventImageButtonModule/EventImageButton.jsx'
+import SearchBar from '../../SearchBarModule/SearchBar.jsx'
+import EventImageButton from '../../../Components/EventImageButtonModule/EventImageButton.jsx'
 import addIcon from '../../assets/add-btn-icon.png'
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
-import ActivityCard from '../../Components/ActivityCardModule/ActivityCard.jsx'
+import ActivityCard from '../../../Components/ActivityCardModule/ActivityCard.jsx'
 import logo from '../../assets/Aligned_logo.png'
 
 // const pizza = doc(firestore, 'something/2021-09-14');
@@ -53,6 +53,7 @@ return (
       <SearchBar/><br/>
       <div className={styles.activityCardDiv}>
         {activityCards.map(card => (
+
                 <ActivityCard
                     id={card.id}
                     thumbnail={logo}

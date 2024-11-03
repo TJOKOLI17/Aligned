@@ -1,31 +1,82 @@
-import {React, useState} from 'react'
+import {React, useState, useEffect} from 'react'
 import styles from "./Project.module.css"
-import { useNavigate } from 'react-router-dom'
-import EventInputForm from '../../../../Components/EventInputFormModule/EventInputForm.jsx'
-import ActiveButton from '../../../../Components/ActiveButtonModule/ActiveButton.jsx'
-import EventButton from '../../../../Components/EventButtonModule/EventButton.jsx'
-import logo from '../../assets/Aligned_logo.png'
+import Stopwatch from '../../../Components/StopWatchModule/Stopwatch.jsx'
+import { useNavigate, useLocation } from 'react-router-dom'
+import { apiKey } from '../../key.js'
+// import EventInputForm from '../../../../Components/EventInputFormModule/EventInputForm.jsx'
+// import ActiveButton from '../../../../Components/ActiveButtonModule/ActiveButton.jsx'
+// import EventButton from '../../../../Components/EventButtonModule/EventButton.jsx'
+// import logo from '../../assets/Aligned_logo.png'
 
 function Project() {
-    document.title = "Project Page"
     const navigate = useNavigate();
+    const [projectData, setProjectData] = useState(null);
+
+    const location = useLocation();
+    const { id } = location.state || {};
+    if(!id){
+        console.log(`No id recieved`)
+    }else{
+        console.log(id)
+    }
+
+    // const getProject = async () => {
+    //     try {
+    //         const response = await fetch(`${apiKey}/${id}`);
+    //         if(!response.ok){
+    //             throw new Error("Error in fetching project");
+    //         }
+    //         const data = await response.json();
+    //         console.log(data.timer)
+    //         return data
+            
+    //     } catch (error) {
+    //         window.alert(error);
+    //     }
+    // }
+
+    useEffect(() => {
+        if (!id) {
+            console.log(`No id received`);
+            return; // Exit early if no ID is present
+        }
+
+        // console.log(id); // Log the ID when present
+
+        const getProject = async () => {
+            try {
+                const response = await fetch(`${apiKey}/${id}`);
+                if (!response.ok) {
+                    throw new Error("Error in fetching project");
+                }
+                const data = await response.json();
+                // console.log(data); // Assuming data.timer is what you want to log
+                // if(projectData != null){
+                    setProjectData(data); // Save project data in state
+                // }
+            } catch (error) {
+                window.alert(error);
+            }
+        };
+
+        getProject(); // Call the function to fetch project data
+    }, [id]);
+
+    if (!projectData) {
+        return <div>Loading...</div>; // Optional: Show a loading state or a message
+    }
+    // console.log(projectData.timer)
+    document.title = `${projectData.name}`
+
+
 
     return(
-        // <div className="w3-sidebar w3-light-grey w3-bar-block" style="width:25%">
-        //     <h3 className="w3-bar-item">Menu</h3>
-        //     <a href="#" className="w3-bar-item w3-button">Link 1</a>
-        //     <a href="#" className="w3-bar-item w3-button">Link 2</a>
-        //     <a href="#" className="w3-bar-item w3-button">Link 3</a>
-        // </div>
+        <>
+        <Stopwatch
+            timeInProgress={projectData.timer}
+        />
 
-        // <div className={styles.sidebar}>
-        //     <a className={styles.active} href="#home">Home</a>
-        //     <a href="#news">News</a>
-        //     <a href="#contact">Contact</a>
-        //     <a href="#about">About</a>
-        // </div>
-        <></>
-        
+        </> 
     )
 }
 
