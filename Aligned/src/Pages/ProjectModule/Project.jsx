@@ -1,39 +1,35 @@
 import {React, useState, useEffect} from 'react'
-import styles from "./Project.module.css"
 import Stopwatch from '../../../Components/StopWatchModule/Stopwatch.jsx'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { apiKey } from '../../key.js'
-// import EventInputForm from '../../../../Components/EventInputFormModule/EventInputForm.jsx'
-// import ActiveButton from '../../../../Components/ActiveButtonModule/ActiveButton.jsx'
-// import EventButton from '../../../../Components/EventButtonModule/EventButton.jsx'
-// import logo from '../../assets/Aligned_logo.png'
+import styles from "./Project.module.css"
+import ActiveButton from '../../../Components/ActiveButtonModule/ActiveButton.jsx'
 
 function Project() {
     const navigate = useNavigate();
     const [projectData, setProjectData] = useState(null);
+    const [status, setStatus] = useState(0);
+    const statusBar = [0, 25, 50, 75, 100];
+
 
     const location = useLocation();
     const { id } = location.state || {};
-    if(!id){
-        console.log(`No id recieved`)
-    }else{
-        console.log(id)
+    // if(!id){
+    //     console.log(`No id recieved`)
+    // }else{
+    //     console.log(id)
+    // }
+
+    const handleStatusUpdate = (newStatus, e) => {
+        document.querySelectorAll(`.${styles.statusBtn}`).forEach(btn => {
+            btn.classList.remove(styles.currentStatus);
+        });
+
+        const statusBtn = e.currentTarget;
+        statusBtn.classList.add(styles.currentStatus)
+        setStatus(newStatus)
     }
 
-    // const getProject = async () => {
-    //     try {
-    //         const response = await fetch(`${apiKey}/${id}`);
-    //         if(!response.ok){
-    //             throw new Error("Error in fetching project");
-    //         }
-    //         const data = await response.json();
-    //         console.log(data.timer)
-    //         return data
-            
-    //     } catch (error) {
-    //         window.alert(error);
-    //     }
-    // }
 
     useEffect(() => {
         if (!id) {
@@ -72,9 +68,31 @@ function Project() {
 
     return(
         <>
-        <Stopwatch
-            timeInProgress={projectData.timer}
-        />
+        <div className={styles.page}>
+            <div className={styles.sidebar}>
+                <h2 className={styles.projectTitle}>{projectData.name}</h2>
+                <div className={styles.statusBar}>
+                    <button className={styles.statusBtn} onClick={(e) => {handleStatusUpdate(100, e)}}> <strong>😁</strong></button>
+                    <button className={styles.statusBtn} onClick={(e) => {handleStatusUpdate(75, e)}}> <strong>🙂</strong></button>
+                    <button className={styles.statusBtn} onClick={(e) => {handleStatusUpdate(50, e)}}> <strong>😐</strong></button>
+                    <button className={styles.statusBtn} onClick={(e) => {handleStatusUpdate(25, e)}}> <strong>☹️</strong></button>
+                    <button className={styles.statusBtn} onClick={(e) => {handleStatusUpdate(0, e)}}> <strong>💀</strong></button>
+                </div>
+            </div>
+            <div className={styles.projectInfo}>
+                <Stopwatch 
+                timeInProgress={projectData.timer}
+                projectId={id}
+                projectData={projectData}/>
+                <div className={styles.projectNotes}>
+                    Notes to come
+                </div>
+            </div>
+            <div>
+                <ActiveButton title="Save"></ActiveButton>
+            </div>
+        </div>
+        
 
         </> 
     )
