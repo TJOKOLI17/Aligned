@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './Home.module.css'
-import SearchBar from '../../SearchBarModule/SearchBar.jsx'
+import SearchBar from '../../../Components/SearchBarModule/SearchBar.jsx'
 import EventImageButton from '../../../Components/EventImageButtonModule/EventImageButton.jsx'
 import addIcon from '../../assets/add-btn-icon.png'
 import { getFirestore, doc, setDoc } from 'firebase/firestore';

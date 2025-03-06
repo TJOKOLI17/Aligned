@@ -1,7 +1,7 @@
 import {React, useState} from 'react'
-import ActivityCard from '../../Components/ActivityCardModule/ActivityCard';
+import ActivityCard from '../ActivityCardModule/ActivityCard';
 import styles from "./SearchBar.module.css"
-import searchIcon from '../assets/searchbar.png'
+import searchIcon from '../../src/assets/searchbar.png'
 function SearchBar(props) {
     // user enters input data
     // search should return all ActivityCards with a title that starts with the query
